@@ -1,0 +1,15 @@
+.text
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
+    mov $0x03,%eax
