@@ -1,23 +1,26 @@
-all: Image
+all:Image
 
-Image: tools/build boot/bootsect boot/setup
-	tools/build boot/bootsect boot/setup > Image
+%.o:%.c
+	x86_64-elf-gcc -m32 -ffreestanding -c -o $@ $<
+%.o:%.asm
+	nasm -f elf -o $@ $<
 
-tools/build: tools/build.c
-	gcc -o tools/build tools/build.c
-	
-boot/bootsect: boot/bootsect.s 
-	as86 -0 -a -o boot/bootsect.o boot/bootsect.s
-	ld86 -0 -s -o boot/bootsect boot/bootsect.o
+Image:boot/bootsect.bin kernel/kernel.bin
+	cat $^ > $@
 
-boot/setup: boot/setup.s
-	as86 -0 -a -o boot/setup.o boot/setup.s
-	ld86 -0 -s -o boot/setup boot/setup.o
+boot/bootsect.bin:boot/boot_sect_main.asm
+	nasm -f bin -o boot/bootsect.bin boot/boot_sect_main.asm	
+kernel/kernel.bin:kernel/to_main.o kernel/kernel.o driver/screen.o
+	x86_64-elf-ld  -m elf_i386 --oformat binary -Ttext 0x1000 -o $@ $^
+
+
+kernel/to_main.o:kernel/to_main.asm
+
+
+
+
+run:
+	bochs -q -f bochs/bochsrc.txt
 clean:
-	rm -f boot/bootsect.o
-	rm -f boot/bootsect
-	rm -f boot/setup.o
-	rm -f boot/setup
-	rm -f tools/build
-	rm -f tools/build.o
-	rm -f Image
+	rm -f *.o *.bin boot/*.o kernel/*.o kernel/*.bin boot/bootsect.bin driver/*.o
+
