@@ -1,0 +1,21 @@
+megs: 32
+
+# filename of ROM images
+romimage: file=/usr/local/share/bochs/BIOS-bochs-latest
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+
+# what disk images will be used 
+floppya: 1_44=Image, status=inserted
+#ata0-master: type=disk, path=bootsect.bin, mode=flat, cylinders=306, heads=4, spt=17, translation=none
+# choose the boot disk.
+boot: floppy
+
+# where do we send log messages?
+log: bochs/bochsout.txt
+
+# disable the mouse
+mouse: enabled=0
+# CPU IPS
+cpu: count=1, ips=10000000
+# enable key mapping, using US layout as default.
+keyboard:keymap=/usr/local/share/bochs/keymaps/sdl2-pc-us.map
