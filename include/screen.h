@@ -19,7 +19,14 @@ void screen_clean();
 
 void print_at(char *str, int row, int col, char attribute_byte);
 
+void print(char *str);
+
 int get_cursor(); //return offset of cursor(byte offset)
 
 void set_cursor(int offset);
+
+void screen_scroll();
+
+void fill_bottom();
+
 #endif

@@ -1,5 +1,5 @@
-#ifndef _LOW_LEVEL_H
-#define _LOW_LEVEL_H
+#ifndef _PORTS_H
+#define _PORTS_H
 void port_out_byte(unsigned short port, unsigned char data);
 
 void port_out_word(unsigned short port, unsigned short data);
