@@ -1,7 +1,7 @@
 all:Image
 
 %.o:%.c
-	x86_64-elf-gcc -m32 -ffreestanding -c -o $@ $<
+	x86_64-elf-gcc -m32 -Iinclude -ffreestanding -c -o $@ $<
 %.o:%.asm
 	nasm -f elf -o $@ $<
 
@@ -10,7 +10,7 @@ Image:boot/bootsect.bin kernel/kernel.bin
 
 boot/bootsect.bin:boot/boot_sect_main.asm
 	nasm -f bin -o boot/bootsect.bin boot/boot_sect_main.asm	
-kernel/kernel.bin:kernel/to_main.o kernel/kernel.o driver/screen.o
+kernel/kernel.bin:kernel/to_main.o kernel/kernel.o driver/screen.o kernel/low_level.o
 	x86_64-elf-ld  -m elf_i386 --oformat binary -Ttext 0x1000 -o $@ $^
 
 
