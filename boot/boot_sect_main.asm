@@ -11,14 +11,11 @@ mov dh, 5          ;number of sectors
 
 mov bx, 0x1000
 call load_disk
-
 cli
 lgdt [GDT_descriptor]
 mov eax, cr0
 or eax, 0x1
 mov cr0, eax
-
-
 
 jmp 8:init_pm
 

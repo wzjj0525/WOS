@@ -52,15 +52,15 @@ void print_at(char *str, int row, int col, char attribute_byte) {
         print_char(str[i++], -1, -1, attribute_byte);
     }
 }
-void print(char *str) {
+void kprint(char *str) {
     print_at(str, -1, -1, WHITE_IN_BLACK);
 }
 
 int get_cursor() {
-    port_out_byte(VGA_CTRL_PORT, 14);
-    int offset = port_in_byte(VGA_DATA_PORT) << 8;
-    port_out_byte(VGA_CTRL_PORT, 15);
-    offset += port_in_byte(VGA_DATA_PORT);
+    outb(VGA_CTRL_PORT, 14);
+    int offset = inb(VGA_DATA_PORT) << 8;
+    outb(VGA_CTRL_PORT, 15);
+    offset += inb(VGA_DATA_PORT);
 
     offset *= 2;
     return offset;
@@ -72,10 +72,10 @@ void set_cursor(int offset) {
         screen_scroll();
         offset -= MAX_COLS;
     }
-    port_out_byte(VGA_CTRL_PORT, 14);
-    port_out_byte(VGA_DATA_PORT, (offset & 0xff00) >> 8);
-    port_out_byte(VGA_CTRL_PORT, 15);
-    port_out_byte(VGA_DATA_PORT, offset & 0x00ff);
+    outb(VGA_CTRL_PORT, 14);
+    outb(VGA_DATA_PORT, (offset & 0xff00) >> 8);
+    outb(VGA_CTRL_PORT, 15);
+    outb(VGA_DATA_PORT, offset & 0x00ff);
 
 }
 
