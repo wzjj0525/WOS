@@ -10,5 +10,7 @@ typedef struct registers
 } __attribute__((packed)) registers_t;
 
 void int_handle(registers_t regs);
+void irq_handle(registers_t regs);
+typedef void (*isr_t)(registers_t);
 
 #endif

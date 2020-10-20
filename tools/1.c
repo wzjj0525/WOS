@@ -2,7 +2,7 @@
 
 int main() {
 
-    for (int i = 0;i < 32; i++) {
-        printf("    set_idt_gate(%d, (u32int)isr%d);\n", i, i);
+    for (int i = 0;i < 16; i++) {
+        printf("[global irq%d]\n", i);
     }
 }

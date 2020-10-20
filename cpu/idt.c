@@ -1,7 +1,8 @@
 #include <idt.h>
+#include <isr.h>
 idt_entry_t idt[IDT_ENTRIES];
 idt_register_t idt_reg;
-
+extern void int32(registers_t regs);
 extern void isr0();
 extern void isr1();
 extern void isr2();
@@ -34,6 +35,24 @@ extern void isr28();
 extern void isr29();
 extern void isr30();
 extern void isr31();
+
+extern void irq0();
+extern void irq1();
+extern void irq2();
+extern void irq3();
+extern void irq4();
+extern void irq5();
+extern void irq6();
+extern void irq7();
+extern void irq8();
+extern void irq9();
+extern void irq10();
+extern void irq11();
+extern void irq12();
+extern void irq13();
+extern void irq14();
+extern void irq15();
+
 
 void set_idt_gate(u32int n, u32int handle) {
     idt[n].offset_low = (handle & 0x0000ffff);
@@ -77,7 +96,7 @@ void idt_init() {
     set_idt_gate(30, (u32int)isr30);
     set_idt_gate(31, (u32int)isr31);
 
-    outb(0x20, 0x11);
+    /*outb(0x20, 0x11);
     outb(0xA0, 0x11);
     outb(0x21, 0x20);
     outb(0xA1, 0x28);
@@ -86,7 +105,27 @@ void idt_init() {
     outb(0x21, 0x01);
     outb(0xA1, 0x01);
     outb(0x21, 0x0);
-    outb(0xA1, 0x0);
+    outb(0xA1, 0x0);*/
+
+    set_idt_gate(32, (u32int)irq0);
+    set_idt_gate(33, (u32int)irq1);
+    set_idt_gate(34, (u32int)irq2);
+    set_idt_gate(35, (u32int)irq3);
+    set_idt_gate(36, (u32int)irq4);
+    set_idt_gate(37, (u32int)irq5);
+    set_idt_gate(38, (u32int)irq6);
+    set_idt_gate(39, (u32int)irq7);
+    set_idt_gate(40, (u32int)irq8);
+    set_idt_gate(41, (u32int)irq9);
+    set_idt_gate(42, (u32int)irq10);
+    set_idt_gate(43, (u32int)irq11);
+    set_idt_gate(44, (u32int)irq12);
+    set_idt_gate(45, (u32int)irq13);
+    set_idt_gate(46, (u32int)irq14);
+    set_idt_gate(47, (u32int)irq15);
+
+    set_interrupt_handle(32, int32);
+
     idt_reg.base =(u32int) (&idt);
     idt_reg.limit = IDT_ENTRIES * sizeof(idt_entry_t) - 1;
     
