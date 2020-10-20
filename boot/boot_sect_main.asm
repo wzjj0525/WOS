@@ -7,7 +7,7 @@ mov bx, msg_1
 call print_str
 
 mov dl, [BOOT_DEV]
-mov dh, 8          ;number of sectors
+mov dh, 10          ;number of sectors
 
 mov bx, 0x1000
 call load_disk
