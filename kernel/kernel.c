@@ -11,8 +11,10 @@ void main () {
     kprint(str);
     idt_init();
     __asm__ __volatile__("sti");
-    //init_timer(100);
+    init_timer(50);
     init_keyboard();
-    //while (1);
-
+    kprint(">");
 }
+
+
+

@@ -11,22 +11,15 @@
 void print_char(char data, int row, int col, char attribute_byte);
 
 void print_char_offset(char data, int offset, char attribute_byte); 
-//offset:we wanna get BYTE offset NOT character offset
-//but VGA IO would get cursor character offset
+
 int get_screen_offset(int row, int col);
-
 void screen_clean();
-
 void print_at(char *str, int row, int col, char attribute_byte);
-
 void kprint(char *str);
-
-int get_cursor(); //return offset of cursor(byte offset)
-
+void kprint_backspace();
+int get_cursor(); 
 void set_cursor(int offset);
-
 void screen_scroll();
-
 void fill_bottom();
 
 #endif

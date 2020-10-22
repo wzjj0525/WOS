@@ -15,6 +15,5 @@ void int_to_ascii(u32int num, char* str) {
         num /= 10;
         if (!num) break;
     }
-    str[i] = '\0';
     reverse(str, strlen(str));
 }

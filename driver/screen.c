@@ -13,6 +13,8 @@ void print_char(char data, int row, int col, char attribute_byte) {
     }
     if (data == '\n') {
         offset = get_screen_offset((offset / 2 / 80), 79);
+        set_cursor(offset + 2);
+        return ;
     }
     video_memmap[offset] = data;
     video_memmap[offset + 1] = attribute_byte;
@@ -48,14 +50,19 @@ void print_at(char *str, int row, int col, char attribute_byte) {
     }
     int i = 0;
     set_cursor(offset);
-    while (str[i] != 0) {
+    while (str[i] != '\0') {
         print_char(str[i++], -1, -1, attribute_byte);
     }
 }
 void kprint(char *str) {
     print_at(str, -1, -1, WHITE_IN_BLACK);
 }
-
+void kprint_backspace() {
+    int offset = get_cursor();
+    offset -= 2;
+    set_cursor(offset);
+    print_char_offset(' ', offset, WHITE_IN_BLACK);
+}
 int get_cursor() {
     outb(VGA_CTRL_PORT, 14);
     int offset = inb(VGA_DATA_PORT) << 8;
