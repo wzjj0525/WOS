@@ -1,5 +1,6 @@
 #include <idt.h>
 #include <isr.h>
+#include <ports.h>
 idt_entry_t idt[IDT_ENTRIES];
 idt_register_t idt_reg;
 extern void int32(registers_t regs);
@@ -96,7 +97,7 @@ void idt_init() {
     set_idt_gate(30, (u32int)isr30);
     set_idt_gate(31, (u32int)isr31);
 
-    /*outb(0x20, 0x11);
+    outb(0x20, 0x11);
     outb(0xA0, 0x11);
     outb(0x21, 0x20);
     outb(0xA1, 0x28);
@@ -105,7 +106,7 @@ void idt_init() {
     outb(0x21, 0x01);
     outb(0xA1, 0x01);
     outb(0x21, 0x0);
-    outb(0xA1, 0x0);*/
+    outb(0xA1, 0x0);
 
     set_idt_gate(32, (u32int)irq0);
     set_idt_gate(33, (u32int)irq1);
@@ -124,7 +125,7 @@ void idt_init() {
     set_idt_gate(46, (u32int)irq14);
     set_idt_gate(47, (u32int)irq15);
 
-    set_interrupt_handle(32, int32);
+    //set_interrupt_handle(33, int32);
 
     idt_reg.base =(u32int) (&idt);
     idt_reg.limit = IDT_ENTRIES * sizeof(idt_entry_t) - 1;

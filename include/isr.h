@@ -1,5 +1,6 @@
 #ifndef _ISR_H
 #define _ISR_H
+#define IRQ(x) ((x)+(32))
 #include <types.h>
 typedef struct registers
 {
@@ -12,5 +13,5 @@ typedef struct registers
 void int_handle(registers_t regs);
 void irq_handle(registers_t regs);
 typedef void (*isr_t)(registers_t);
-
+void set_interrupt_handle(u8int int_no, isr_t handle);
 #endif

@@ -11,11 +11,12 @@ floppya: 1_44=Image, status=inserted
 boot: floppy
 
 # where do we send log messages?
-log: bochs/bochsout.txt
+#log: bochs/bochsout.txt
 
 # disable the mouse
 mouse: enabled=0
 # CPU IPS
 cpu: count=1, ips=10000000
 # enable key mapping, using US layout as default.
-keyboard:keymap=/usr/local/share/bochs/keymaps/sdl2-pc-us.map
+keyboard: keymap=/usr/local/share/bochs/keymaps/sdl2-pc-us.map
+# gdbstub: enabled=1, port=1234, text_base=0, data_base=0, bss_base=0; 

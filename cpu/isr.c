@@ -18,11 +18,13 @@ void set_interrupt_handle(u8int int_no, isr_t handle) {
     interrupt_handle[int_no] = handle;
 }
 void irq_handle(registers_t regs) {
+    
+    isr_t handle =interrupt_handle[regs.int_no];
+
     if (regs.int_no >= 40) {
         outb(0xa0, 0x20);
     }
     outb(0x20, 0x20);
-    isr_t handle = interrupt_handle[regs.int_no];
     if (handle != 0)
         handle(regs);
 }

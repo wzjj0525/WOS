@@ -1,5 +1,6 @@
 #include <util.h>
-//#include <string.h>
+#include <types.h>
+#include <string.h>
 void mem_cpy(char* source, char* dest, int bytes) {
     int i = 0;
     for (i = 0; i < bytes; i++) {
@@ -15,5 +16,5 @@ void int_to_ascii(u32int num, char* str) {
         if (!num) break;
     }
     str[i] = '\0';
-
+    reverse(str, strlen(str));
 }

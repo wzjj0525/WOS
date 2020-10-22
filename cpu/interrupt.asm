@@ -3,13 +3,13 @@
 [extern irq_handle]
 isr_common_stub:
     pusha
-    mov eax, ds
+    mov ax, ds
     push eax
     mov ds, ax
     mov es, ax
     mov fs, ax
     mov gs, ax
-
+    cld
     call int_handle
 
     pop eax
@@ -24,13 +24,13 @@ isr_common_stub:
 
 irq_common_stub:
     pusha
-    mov eax, ds
+    mov ax, ds
     push eax
     mov ds, ax
     mov es, ax
     mov fs, ax
     mov gs, ax
-
+    cld
     call irq_handle
 
     pop eax
@@ -42,7 +42,7 @@ irq_common_stub:
     add esp, 8
     sti
     iret
-
+    
 [global isr0]
 [global isr1]
 [global isr2]

@@ -1,9 +1,9 @@
 
-kernel.binn:	file format ELF32-i386
+kernel.bin:	file format ELF32-i386
 
 SYMBOL TABLE:
 00001000 l    d  .text	00000000 .text
-00001bb2 l    d  .rodata	00000000 .rodata
+00001d2f l    d  .rodata	00000000 .rodata
 00002000 l    d  .bss	00000000 .bss
 00000000 l    d  .comment	00000000 .comment
 00000000 l    df *ABS*	00000000 kernel/to_main.asm
@@ -14,84 +14,88 @@ SYMBOL TABLE:
 00000000 l    df *ABS*	00000000 idt.c
 00000000 l    df *ABS*	00000000 isr.c
 00000000 l    df *ABS*	00000000 cpu/interrupt.asm
-000019a0         .text	00000000 isr_common_stub
-000019c0         .text	00000000 irq_common_stub
+00001a70         .text	00000000 isr_common_stub
+00001a90         .text	00000000 irq_common_stub
+00000000 l    df *ABS*	00000000 timer.c
 00000000 l    df *ABS*	00000000 int32.c
-0000145b g     F .text	0000001d inb
-00001497 g     F .text	0000003b mem_cpy
-00001164 g     F .text	0000004e screen_clean
-000019fc         .text	00000000 isr4
-00001ac7         .text	00000000 isr27
-00001a3f         .text	00000000 isr13
-0000104b g     F .text	000000c3 print_char
-00001b71         .text	00000000 irq12
-00001a95         .text	00000000 isr22
-00001a4f         .text	00000000 isr15
-00001b5d         .text	00000000 irq10
-00001b85         .text	00000000 irq14
-00001a1d         .text	00000000 isr9
-00001b49         .text	00000000 irq8
-00001a9f         .text	00000000 isr23
-00001adb         .text	00000000 isr29
-00001922 g     F .text	0000007d irq_handle
-000018be g     F .text	00000047 int_handle
-00001aef         .text	00000000 isr31
-00001a8b         .text	00000000 isr21
-00001b67         .text	00000000 irq11
-00001ad1         .text	00000000 isr28
-00001a18         .text	00000000 isr8
-00001b2b         .text	00000000 irq5
-00001a81         .text	00000000 isr20
-00001a47         .text	00000000 isr14
-00001478 g     F .text	0000001f inw
-00001a03         .text	00000000 isr5
-000012b2 g     F .text	00000081 set_cursor
-00001589 g     F .text	00000335 idt_init
-00001251 g     F .text	00000061 get_cursor
-00001b35         .text	00000000 irq6
-00001b03         .text	00000000 irq1
-00001237 g     F .text	0000001a kprint
+0000145d g     F .text	0000001d inb
+00001499 g     F .text	0000003b mem_cpy
+00001166 g     F .text	0000004e screen_clean
+00001acc         .text	00000000 isr4
+00001b97         .text	00000000 isr27
+00001b0f         .text	00000000 isr13
+0000104d g     F .text	000000c3 print_char
+00001c41         .text	00000000 irq12
+00001b65         .text	00000000 isr22
+00001b1f         .text	00000000 isr15
+00001c2d         .text	00000000 irq10
+00001c55         .text	00000000 irq14
+00001aed         .text	00000000 isr9
+00001c19         .text	00000000 irq8
+00001b6f         .text	00000000 isr23
+00001c69 g     F .text	00000040 timer_callback
+00001bab         .text	00000000 isr29
+000019e7 g     F .text	0000007d irq_handle
+00001983 g     F .text	00000047 int_handle
+00001bbf         .text	00000000 isr31
+00001ca9 g     F .text	0000006d init_timer
+00001b5b         .text	00000000 isr21
+00001c37         .text	00000000 irq11
+00001ba1         .text	00000000 isr28
+00001ae8         .text	00000000 isr8
+00001bfb         .text	00000000 irq5
+00001b51         .text	00000000 isr20
+00001b17         .text	00000000 isr14
+0000147a g     F .text	0000001f inw
+00001ad3         .text	00000000 isr5
+000012b4 g     F .text	00000081 set_cursor
+0000158b g     F .text	000003f8 idt_init
+00001253 g     F .text	00000061 get_cursor
+00001c05         .text	00000000 irq6
+00001bd3         .text	00000000 irq1
+00001239 g     F .text	0000001a kprint
 00001000         .text	00000000 _start
-000019e7         .text	00000000 isr1
-00001333 g     F .text	00000083 screen_scroll
-00001b53         .text	00000000 irq9
-00001abd         .text	00000000 isr26
-00001a2f         .text	00000000 isr11
-000013b6 g     F .text	00000063 fill_bottom
-000014d2 g     F .text	0000006b int_to_ascii
-00001419 g     F .text	00000021 outb
-00001b7b         .text	00000000 irq13
-00001a37         .text	00000000 isr12
+00001ab7         .text	00000000 isr1
+00001335 g     F .text	00000083 screen_scroll
+00001c23         .text	00000000 irq9
+00001b8d         .text	00000000 isr26
+00001aff         .text	00000000 isr11
+000013b8 g     F .text	00000063 fill_bottom
+000014d4 g     F .text	0000006b int_to_ascii
+00002c20 g     O .bss	00000002 tick
+0000141b g     F .text	00000021 outb
+00001c4b         .text	00000000 irq13
+00001b07         .text	00000000 isr12
 00002000         .bss	00000000 __bss_start
-00001b99 g     F .text	00000019 int32
-00001007 g     F .text	00000044 main
-000019e0         .text	00000000 isr0
-00001b0d         .text	00000000 irq2
-00001aa9         .text	00000000 isr24
-00001a59         .text	00000000 isr16
-00001905 g     F .text	0000001d set_interrupt_handle
-000011b2 g     F .text	00000085 print_at
+00001d16 g     F .text	00000019 int32
+00001007 g     F .text	00000046 main
+00001ab0         .text	00000000 isr0
+00001bdd         .text	00000000 irq2
+00001b79         .text	00000000 isr24
+00001b29         .text	00000000 isr16
+000019ca g     F .text	0000001d set_interrupt_handle
+000011b4 g     F .text	00000085 print_at
 00002000 g     O .bss	00000800 idt
-000019f5         .text	00000000 isr3
-0000110e g     F .text	0000003b print_char_offset
-00001a0a         .text	00000000 isr6
-00001b3f         .text	00000000 irq7
-0000143a g     F .text	00000021 outw
-00001a6d         .text	00000000 isr18
-00001af9         .text	00000000 irq0
+00001ac5         .text	00000000 isr3
+00001110 g     F .text	0000003b print_char_offset
+00001ada         .text	00000000 isr6
+00001c0f         .text	00000000 irq7
+0000143c g     F .text	00000021 outw
+00001b3d         .text	00000000 isr18
+00001bc9         .text	00000000 irq0
 00002000         .bss	00000000 _edata
-00002c20         .bss	00000000 _end
-00001a27         .text	00000000 isr10
-0000153d g     F .text	0000004c set_idt_gate
-00001a63         .text	00000000 isr17
-000019ee         .text	00000000 isr2
-00001a77         .text	00000000 isr19
-00001ae5         .text	00000000 isr30
-00001b8f         .text	00000000 irq15
-00001a11         .text	00000000 isr7
+00002c24         .bss	00000000 _end
+00001af7         .text	00000000 isr10
+0000153f g     F .text	0000004c set_idt_gate
+00001b33         .text	00000000 isr17
+00001abe         .text	00000000 isr2
+00001b47         .text	00000000 isr19
+00001bb5         .text	00000000 isr30
+00001c5f         .text	00000000 irq15
+00001ae1         .text	00000000 isr7
 00002800 g     O .bss	00000006 idt_reg
-00001ab3         .text	00000000 isr25
+00001b83         .text	00000000 isr25
 00002820 g     O .bss	00000400 interrupt_handle
-00001b21         .text	00000000 irq4
-00001b17         .text	00000000 irq3
-00001149 g     F .text	0000001b get_screen_offset
+00001bf1         .text	00000000 irq4
+00001be7         .text	00000000 irq3
+0000114b g     F .text	0000001b get_screen_offset
